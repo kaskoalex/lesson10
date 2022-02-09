@@ -1,41 +1,21 @@
 const lists=document.querySelectorAll('.list')
 const elems = document.querySelectorAll('.elem')
+const title = document.getElementById('title')
 
-console.log(lists);
-console.log(elems);
+// -------- Устаревшая методика appendChild -----------------
 
-const newElem = document.createElement('li')
-console.log(newElem);
+lists[1].append(elems[4], elems[3], elems[2])
 
-newElem.textContent='step 6'
-newElem.classList.add('elem')
+lists[1].appendChild(elems[5])
+//  --appendChild выводит один елемент и не выводит строки --
 
-//  ------   createElement    -----
-// создали новый елемент с классом 'elem'
+// --------------- Устаревшая методика insertBefore   ----------
 
-lists[1].append(newElem)
-console.log(newElem);
-//------------------------------------------
-
-const title=document.getElementById('title')
-
-title.insertAdjacentText('beforebegin','beforbegin') // добавил строку перед title 
-title.insertAdjacentText('afterend', 'afterend')// добавил строку после title 
-
-title.insertAdjacentText('beforeend', ' beforeend') // добавил строку в начале title 
-title.insertAdjacentText('afterbegin', 'afterbegin ')// добавил строку в конце title 
-//----------------------------------------------------
-title.insertAdjacentElement('beforebegin', elems[0]) // добавил елемент с классом перед title 
-title.insertAdjacentElement('afterend', elems[1])// добавил елемент с классом после title 
-
-title.insertAdjacentElement('beforeend', elems[2]) // добавил елемент с классом в начале title 
-title.insertAdjacentElement('afterbegin', elems[3])// добавил елемент с классом в конце title 
-console.log(title);
+lists[1].insertBefore(elems[5],elems[1])// new befor
 
 //-----------------------------------------------------
 
-title.insertAdjacentHTML('beforebegin', '<span>step 1</span>') // добавил HTML строку перед title 
-title.insertAdjacentHTML('afterend','<span>step 1</span>')// добавил HTML строку после title 
+lists[1].replaceChild(elems[5], elems[1])// new replaceWith
+//-----------------------------------------------------
 
-title.insertAdjacentHTML('beforeend','<span>step 1</span>') // добавил HTML строку в начале title 
-title.insertAdjacentHTML('afterbegin', '<span>step 1</span>')// добавил HTML строку в конце title
+lists[1].removeChild(elems[5])// new remove
