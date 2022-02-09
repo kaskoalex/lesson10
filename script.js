@@ -5,27 +5,31 @@ console.log(lists);
 console.log(elems)
 
 
-lists[1].append(elems[4])
-// если удалить методы remove елементы остаются в list
-// append - убирает изодного списка  и пермещает елемент в другой список без remove
-//-----------------------------------------------------
+const  cloneElem1 = elems[3] // создаёт ссылку на елемент 3, а не новый елемент 3
+const cloneElem = elems[3].cloneNode() // создаёт пустой елемент  3 без содержымого внутри тега
+const cloneElem2 = elems[3].cloneNode(true) // через true получаем елемент с содержымым внутри тега
 
-lists[1].prepend(elems[5]) // вставляет елемент в начале списка, всё остальное как у append
+//после клонирывания материнский елемент сохроняется
+
+lists[1].append(cloneElem2)
+
+
+console.log(cloneElem1)
+console.log(cloneElem)
+console.log(cloneElem2)
 
 //------------------------------------------------------
 
-lists[0].before(lists[1]) //поменяли местами списки елементоб с ul  перед ol  наоборот ol перед ul.
+cloneElem.classList.add('green-color')
+cloneElem.textContent = 'step 6'
+// создаём елемент в классе лист содержащим класс елем с продолжением класса green- color  = elem green-color , вставляя в него строку step 6
+console.dir(cloneElem)
 
-elems[3].before(elems[0]) // поставили елемент 0 перед елементом 3  , 
-//   !!!!!!  befor  ---- перед  !!!!!
 
+cloneElem.innerHTML = '<strong>step 6</strong>'
+// задача строки через html , считывает теги
+lists[1].append(cloneElem)
+console.log(cloneElem)
 
-elems[3].after(elems[0])
-
-//     !!!!!  after  - после  !!!! переставляет после .
-lists[0].after(lists[1])
-//---------------------------------------------------
-
-elems[4].replaceWith(elems[2]) //   заменяем 4 елемент на 2 , удаляя елемент 2 из другого списка
-elems[2].replaceWith('Передаём строку') 
-lists[1].prepend('Передаём строку')
+lists[0].innerHTML = ''
+//innerHTML переписывает или если ничего не задать стирает
